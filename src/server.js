@@ -1,6 +1,6 @@
 const Hapi = require('@hapi/hapi');
 const notes = require('./api/notes');
-const NotesService = require('./service/inMemory/NotesService');
+const NotesService = require('./services/inMemory/NotesService');
 
 const init = async () => {
   const notesService = new NotesService();
@@ -16,7 +16,7 @@ const init = async () => {
 
   await server.register({
     plugin: notes,
-    option: {
+    options: {
       service: notesService,
     },
   });
